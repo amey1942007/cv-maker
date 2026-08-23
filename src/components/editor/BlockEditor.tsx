@@ -336,13 +336,15 @@ export function BlockEditor({ pageId, block, index, total }: BlockEditorProps) {
   return (
     <div
       className={`border rounded-lg mb-2 transition-colors ${
-        isSelected ? 'border-blue-400 bg-blue-50/30' : 'border-gray-200 bg-white'
+        isSelected
+          ? 'border-blue-400 dark:border-blue-500 bg-blue-50/30 dark:bg-blue-950/30'
+          : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900'
       }`}
       onClick={() => setSelectedBlock(block.id)}
     >
-      <div className="flex items-center gap-1 px-2 py-1.5 bg-gray-50 border-b border-gray-200 rounded-t-lg">
+      <div className="flex items-center gap-1 px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
         <GripVertical size={14} className="text-gray-400" />
-        <span className="text-xs font-medium text-gray-700 flex-1 truncate">{blockLabel}</span>
+        <span className="text-xs font-medium text-gray-700 dark:text-gray-200 flex-1 truncate">{blockLabel}</span>
         <button
           type="button"
           onClick={(e) => {

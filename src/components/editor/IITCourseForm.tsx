@@ -28,48 +28,48 @@ export function IITCourseForm({ pageId, onClose }: IITCourseFormProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-lg">
-        <h3 className="text-lg font-semibold mb-4">Add IIT Course Row</h3>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 w-full max-w-lg border border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Add IIT Course Row</h3>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Degree</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Degree</label>
             <input
               type="text"
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+              className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 text-sm"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Institute</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Institute</label>
             <input
               type="text"
               value={institute}
               onChange={(e) => setInstitute(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+              className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 text-sm"
               required
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">CGPA</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">CGPA</label>
               <input
                 type="text"
                 value={cgpa}
                 onChange={(e) => setCgpa(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 text-sm"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Dept. Rank</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Dept. Rank</label>
               <input
                 type="text"
                 value={deptRank}
                 onChange={(e) => setDeptRank(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 text-sm"
               />
             </div>
           </div>

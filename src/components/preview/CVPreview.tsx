@@ -9,7 +9,7 @@ export const CVPreview = forwardRef<HTMLDivElement>(function CVPreview(_, ref) {
   const cv = useCVStore((s) => s.cv)
 
   return (
-    <div ref={ref} className="cv-document bg-gray-100 py-6 px-4 min-h-full overflow-auto">
+    <div ref={ref} className="cv-document bg-gray-100 dark:bg-gray-900 py-6 px-4 min-h-full overflow-auto">
       {cv.pages.map((page, pageIndex) => (
         <div
           key={page.id}

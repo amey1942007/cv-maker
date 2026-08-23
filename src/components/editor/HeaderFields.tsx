@@ -53,30 +53,30 @@ export function HeaderFields() {
   const existingTypes = new Set(cv.socials.map((s) => s.type))
 
   return (
-    <div className="bg-white border-b border-gray-200 shrink-0">
+    <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0">
       <button
         type="button"
         onClick={() => setCollapsed((c) => !c)}
-        className="w-full flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 text-left"
+        className="w-full flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 text-left"
       >
-        <span className="text-sm font-semibold text-gray-800 uppercase tracking-wide flex-1">
+        <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 uppercase tracking-wide flex-1">
           Header
         </span>
         {collapsed && filled && (
-          <span className="text-xs text-gray-500 truncate max-w-[180px]">{headerSummary(cv)}</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-[180px]">{headerSummary(cv)}</span>
         )}
-        {collapsed ? <ChevronDown size={16} className="text-gray-500 shrink-0" /> : <ChevronUp size={16} className="text-gray-500 shrink-0" />}
+        {collapsed ? <ChevronDown size={16} className="text-gray-500 dark:text-gray-400 shrink-0" /> : <ChevronUp size={16} className="text-gray-500 dark:text-gray-400 shrink-0" />}
       </button>
 
       {!collapsed && (
         <div className="space-y-4 px-4 pb-4">
           <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">Full Name</label>
+            <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Full Name</label>
             <input
               type="text"
               value={cv.name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm uppercase"
+              className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 text-sm uppercase"
               placeholder="YOUR FULL NAME"
             />
           </div>
@@ -137,7 +137,7 @@ export function HeaderFields() {
                     value={social.label ?? ''}
                     onChange={(e) => updateSocial(social.id, social.value, e.target.value)}
                     placeholder="Label"
-                    className="w-24 border border-gray-300 rounded px-2 py-1.5 text-xs"
+                    className="w-24 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-2 py-1.5 text-xs"
                   />
                 )}
                 <input
@@ -151,7 +151,7 @@ export function HeaderFields() {
                         ? 'URL or value'
                         : 'profile URL'
                   }
-                  className="flex-1 border border-gray-300 rounded px-2 py-1.5 text-xs"
+                  className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-2 py-1.5 text-xs"
                 />
                 <button
                   type="button"

@@ -81,10 +81,10 @@ export function EditorPanel() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-gray-100 overflow-hidden">
+    <div className="h-full flex flex-col bg-gray-100 dark:bg-gray-950 overflow-hidden">
       <HeaderFields />
 
-      <div className="flex items-center gap-1 px-3 py-2 bg-white border-b border-gray-200 overflow-x-auto shrink-0">
+      <div className="flex items-center gap-1 px-3 py-2 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 overflow-x-auto shrink-0">
         {cv.pages.map((page, i) => (
           <button
             key={page.id}
@@ -93,7 +93,7 @@ export function EditorPanel() {
             className={`px-3 py-1 text-xs rounded ${
               pageId === page.id
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
           >
             Page {i + 1}
@@ -103,7 +103,7 @@ export function EditorPanel() {
           <button
             type="button"
             onClick={handleRemovePage}
-            className="flex items-center gap-1 px-2 py-1 text-xs text-red-600 hover:bg-red-50 rounded ml-1"
+            className="flex items-center gap-1 px-2 py-1 text-xs text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 rounded ml-1"
             title="Remove current page"
           >
             <Trash2 size={12} /> Remove Page
@@ -140,7 +140,7 @@ export function EditorPanel() {
           />
         ))}
         {activePage?.blocks.length === 0 && (
-          <p className="text-sm text-gray-500 text-center py-8">
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">
             No blocks on this page. Use the toolbar to add sections, education, projects, etc.
           </p>
         )}

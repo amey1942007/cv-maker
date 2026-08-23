@@ -37,12 +37,12 @@ export function Toolbar({
   canRemoveBlock,
 }: ToolbarProps) {
   const btnClass =
-    'flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-gray-300 rounded hover:bg-gray-50 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed'
+    'flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-50 dark:hover:bg-gray-700 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed'
   const removeClass =
-    'flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-red-200 text-red-600 rounded hover:bg-red-50 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed'
+    'flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white dark:bg-gray-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 rounded hover:bg-red-50 dark:hover:bg-red-950 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed'
 
   return (
-    <div className="flex flex-wrap gap-1.5 p-3 bg-gray-50 border-b border-gray-200">
+    <div className="flex flex-wrap gap-1.5 p-3 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
       <button type="button" onClick={onAddSection} className={btnClass}>
         <FilePlus size={14} /> Add Section
       </button>
