@@ -1,10 +1,21 @@
 # IIT Delhi CV Maker
 
-A browser-based CV editor that mirrors the **IIT Delhi academic CV format** — gray section bars, floating education columns, live A4 preview, and export to PDF, DOCX, TeX, and JSON.
+A free, browser-based CV editor that mirrors the **IIT Delhi academic CV format** — gray section bars, floating education columns, live A4 preview, and export to PDF, DOCX, TeX, and JSON.
+
+**Live app:** [https://amey1942007.github.io/cv-maker/](https://amey1942007.github.io/cv-maker/)
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-222?logo=github)
+
+## Use Online (no install)
+
+Open the hosted webapp in any modern browser:
+
+**[https://amey1942007.github.io/cv-maker/](https://amey1942007.github.io/cv-maker/)**
+
+No account or signup required. Your CV is saved automatically in your browser (localStorage). Use **Save JSON** to back up or move your data to another device.
 
 ## Features
 
@@ -17,7 +28,7 @@ A browser-based CV editor that mirrors the **IIT Delhi academic CV format** — 
 - **Export** — PDF, DOCX, LaTeX (`.tex`), and JSON save/load
 - **Auto-save** — CV data persists in browser localStorage
 
-## Quick Start
+## Run Locally
 
 ### Prerequisites
 
@@ -135,6 +146,22 @@ public/iit-delhi-logo.svg
 
 Use your official IIT Delhi logo (PNG or SVG). If the file fails to load, a placeholder is shown instead.
 
+## GitHub Pages Deployment
+
+The app auto-deploys to GitHub Pages on every push to `main` via [GitHub Actions](.github/workflows/deploy-pages.yml).
+
+**Live URL:** `https://amey1942007.github.io/cv-maker/`
+
+### First-time setup (repo owner)
+
+1. Go to **Settings → Pages** in the GitHub repo
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**
+3. Push to `main` — the workflow builds and publishes automatically
+
+### Manual deploy trigger
+
+In GitHub: **Actions → Deploy to GitHub Pages → Run workflow**
+
 ## Project Structure
 
 ```
@@ -162,6 +189,7 @@ src/
 | PDF | html2canvas + jsPDF |
 | DOCX | docx |
 | Icons | lucide-react |
+| Hosting | GitHub Pages + GitHub Actions |
 
 ## Scripts
 

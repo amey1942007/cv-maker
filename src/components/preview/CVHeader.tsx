@@ -39,7 +39,7 @@ export function CVHeader({ name, photoBase64, socials, showHeader = true }: CVHe
     <div className="cv-header-row">
       <div className="cv-header-logo">
         <img
-          src="/iit-delhi-logo.svg"
+          src={`${import.meta.env.BASE_URL}iit-delhi-logo.svg`}
           alt="IIT Delhi"
           className="cv-logo"
           onError={(e) => {
