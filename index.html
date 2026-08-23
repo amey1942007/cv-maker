@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/cv-maker/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Maker</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('cv-maker-theme')
+          var mode = 'system'
+          if (stored) mode = JSON.parse(stored).state.mode || 'system'
+          var dark =
+            mode === 'dark' ||
+            (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+    <script type="module" crossorigin src="/cv-maker/assets/index-BqjGrAhe.js"></script>
+    <link rel="stylesheet" crossorigin href="/cv-maker/assets/index-DyX9CVa3.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
