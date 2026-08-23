@@ -148,11 +148,17 @@ The app auto-deploys to GitHub Pages on every push to `main` via [GitHub Actions
 
 **Live URL:** `https://amey1942007.github.io/cv-maker/`
 
-### First-time setup (repo owner)
+### First-time setup (repo owner) — required once
 
-1. Go to **Settings → Pages** in the GitHub repo
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**
-3. Push to `main` — the workflow builds and publishes automatically
+After the first successful workflow run:
+
+1. Go to **[Settings → Pages](https://github.com/amey1942007/cv-maker/settings/pages)**
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**
+3. Choose branch **`gh-pages`**, folder **`/ (root)`**, then **Save**
+
+Live URL: **https://amey1942007.github.io/cv-maker/**
+
+> If you previously tried **GitHub Actions** as the source and deploy failed, switch to **Deploy from a branch** as above.
 
 ### Manual deploy trigger
 
