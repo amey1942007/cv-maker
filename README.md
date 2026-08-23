@@ -27,8 +27,8 @@ A browser-based CV editor that mirrors the **IIT Delhi academic CV format** — 
 ### Install & Run
 
 ```bash
-git clone <your-repo-url>
-cd iit-cv-maker
+git clone https://github.com/amey1942007/cv-maker.git
+cd cv-maker
 
 npm install
 npm run dev
@@ -85,9 +85,16 @@ When adding education, fill in:
 | Institute | School name (use a new line for city) |
 | GPA / Marks | `9.06` (CGPA) or `95` (percentage) |
 
-### 4. Text formatting
+### 4. Bullet points and text formatting
 
-Inside any bullet, title, or education field:
+Bullet points are **plain text** — no hyphen or bullet is added automatically. Type your own prefix at the start of each line:
+
+```
+- NSEP 2024 Center Top 10% : Secured rank in top 10%
+• Programming Skills : Python, JavaScript, ...
+```
+
+Inline formatting inside any field:
 
 ```
 *text*   → bold
@@ -97,7 +104,7 @@ _text_   → underline
 Example:
 
 ```
-Secured *top 10%* in _NSEP 2024_ at center level
+- Secured *top 10%* in _NSEP 2024_ at center level
 ```
 
 ### 5. Pages
