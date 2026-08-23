@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Download, FileJson, Upload, RotateCcw } from 'lucide-react'
 import { EditorPanel } from './components/editor/EditorPanel'
 import { CVPreview } from './components/preview/CVPreview'
+import { AppDisclaimer } from './components/AppDisclaimer'
 import { useCVStore } from './store/cvStore'
 import { exportToPDF } from './lib/export/pdf'
 import { exportToDOCX } from './lib/export/docx'
@@ -111,6 +112,7 @@ export default function App() {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       <ExportBar />
+      <AppDisclaimer />
     </div>
   )
 }

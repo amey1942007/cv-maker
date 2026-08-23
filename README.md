@@ -17,6 +17,8 @@ Open the hosted webapp in any modern browser:
 
 No account or signup required. Your CV is saved automatically in your browser (localStorage). Use **Save JSON** to back up or move your data to another device.
 
+> **Disclaimer:** This tool is unofficial and not affiliated with IIT Delhi. Use at your own risk. The author does **not** recommend IIT Delhi students use this for **OCS placement or internship** applications — use official institute templates instead. Intended for **external interns** and personal use. See [LICENSE.md](LICENSE.md) for full terms.
+
 ## Features
 
 - **IIT Delhi layout** — Logo (top-left), name (center), photo (top-right), gray section headers with black borders
@@ -198,6 +200,19 @@ src/
 
 All CV data is stored **locally in your browser** via localStorage (`iit-cv-maker` key). Nothing is sent to a server. Use **Save JSON** to back up your work.
 
+## Disclaimer
+
+This project is an **unofficial, independent tool**. It is **not affiliated with, endorsed by, or approved by** IIT Delhi or any of its offices.
+
+- **Use at your own risk** — no warranty of any kind.
+- **Not for IIT Delhi OCS placement or internship** — IIT Delhi students should use official institute channels and CV templates for placement and internship applications.
+- **Intended for external interns** and personal, unofficial use only.
+- CV data stays **local in your browser**; nothing is sent to a server.
+
+Full legal text: [LICENSE.md](LICENSE.md)
+
 ## License
 
-MIT
+Copyright © 2026 Amey Lalit Chaudhari.
+
+Source code is licensed under the **MIT License**. See [LICENSE.md](LICENSE.md) for the full license text and disclaimer of use.
