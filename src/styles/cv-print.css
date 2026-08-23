@@ -1,0 +1,226 @@
+/* IIT Delhi CV print/preview styles */
+.cv-document {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.2;
+  color: #000;
+}
+
+.cv-page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 10mm 12mm 14mm;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  margin: 0 auto 24px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-page-content {
+  flex: 1;
+}
+
+.cv-name {
+  font-size: 15pt;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.cv-socials {
+  text-align: center;
+  font-size: 9pt;
+  margin: 2px 0 0;
+  color: #222;
+}
+
+.cv-socials a,
+.cv-socials span {
+  margin: 0 6px;
+}
+
+/* Section header: black line + gray bar + black line */
+.cv-section-header {
+  border-top: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
+  margin: 5px 0 1px;
+  line-height: 1;
+}
+
+.cv-section-header-bar {
+  background: #d9d9d9;
+  text-align: center;
+  padding: 2px 6px;
+  font-size: 10pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+/* Flush against header — same spacing as IIT CV */
+.cv-header-row + .cv-block .cv-section-header {
+  margin-top: 0;
+}
+
+.cv-block + .cv-block .cv-section-header {
+  margin-top: 4px;
+}
+
+/* Floating education layout */
+.cv-education {
+  font-size: 10pt;
+  margin-bottom: 2px;
+}
+
+.cv-education-header,
+.cv-education-row {
+  display: grid;
+  grid-template-columns: 10% 28% 44% 18%;
+  gap: 0 6px;
+  align-items: start;
+}
+
+.cv-iit-course .cv-education-header,
+.cv-iit-course .cv-education-row {
+  grid-template-columns: 32% 38% 12% 18%;
+}
+
+.cv-education-header {
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1px;
+  margin-bottom: 1px;
+}
+
+.cv-education-row {
+  margin-bottom: 0;
+}
+
+.cv-edu-year,
+.cv-iit-degree {
+  text-align: left;
+}
+
+.cv-edu-degree,
+.cv-iit-institute {
+  text-align: left;
+}
+
+.cv-edu-institute {
+  text-align: left;
+  white-space: pre-line;
+}
+
+.cv-edu-gpa,
+.cv-iit-rank {
+  text-align: right;
+}
+
+.cv-iit-cgpa {
+  text-align: center;
+}
+
+.cv-bullet-list {
+  margin: 1px 0 2px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.cv-bullet-list li {
+  margin-bottom: 1px;
+  padding-left: 0;
+  text-indent: 0;
+}
+
+.cv-project-title {
+  font-weight: bold;
+  margin-top: 3px;
+  margin-bottom: 1px;
+}
+
+/* Project separator — em-dash line between projects */
+.cv-divider {
+  border: none;
+  margin: 3px 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1;
+  color: #000;
+}
+
+.cv-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 8.5pt;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cv-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cv-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.cv-logo-placeholder {
+  width: 72px;
+  height: 72px;
+  border: 1px dashed #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7pt;
+  color: #666;
+  text-align: center;
+  padding: 4px;
+}
+
+.cv-photo {
+  width: 88px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.cv-photo-placeholder {
+  width: 88px;
+  height: 100px;
+  border: 1px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8pt;
+  color: #999;
+}
+
+.cv-header-center {
+  flex: 1;
+  padding: 0 10px 2px;
+  align-self: center;
+}
+
+@media print {
+  .cv-page {
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+  }
+}
