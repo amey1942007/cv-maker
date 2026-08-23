@@ -4,6 +4,7 @@ interface CVHeaderProps {
   name: string
   photoBase64?: string
   socials: SocialLink[]
+  showIITLogo?: boolean
   showHeader?: boolean
 }
 
@@ -24,7 +25,13 @@ function formatSocial(link: SocialLink): string {
   }
 }
 
-export function CVHeader({ name, photoBase64, socials, showHeader = true }: CVHeaderProps) {
+export function CVHeader({
+  name,
+  photoBase64,
+  socials,
+  showIITLogo = true,
+  showHeader = true,
+}: CVHeaderProps) {
   if (!showHeader) {
     return (
       <div className="cv-block">
@@ -38,20 +45,15 @@ export function CVHeader({ name, photoBase64, socials, showHeader = true }: CVHe
   return (
     <div className="cv-header-row">
       <div className="cv-header-logo">
-        <img
-          src={`${import.meta.env.BASE_URL}iit-delhi-logo.svg`}
-          alt="IIT Delhi"
-          className="cv-logo"
-          onError={(e) => {
-            const target = e.currentTarget
-            target.style.display = 'none'
-            const placeholder = target.nextElementSibling as HTMLElement
-            if (placeholder) placeholder.style.display = 'flex'
-          }}
-        />
-        <div className="cv-logo-placeholder" style={{ display: 'none' }}>
-          IIT Delhi Logo
-        </div>
+        {showIITLogo ? (
+          <img
+            src={`${import.meta.env.BASE_URL}iit-delhi-logo.png`}
+            alt="IIT Delhi"
+            className="cv-logo"
+          />
+        ) : (
+          <div className="cv-logo-spacer" aria-hidden="true" />
+        )}
       </div>
 
       <div className="cv-header-center">

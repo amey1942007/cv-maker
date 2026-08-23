@@ -22,6 +22,7 @@ export const CVPreview = forwardRef<HTMLDivElement>(function CVPreview(_, ref) {
               name={cv.name}
               photoBase64={cv.photoBase64}
               socials={cv.socials}
+              showIITLogo={cv.showIITLogo ?? true}
               showHeader={pageIndex === 0}
             />
             {pageIndex > 0 && <div className="cv-name">{cv.name}</div>}

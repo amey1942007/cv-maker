@@ -175,10 +175,17 @@
   padding-bottom: 0;
 }
 
+.cv-logo-spacer {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
 .cv-logo {
   width: 72px;
   height: 72px;
   object-fit: contain;
+  display: block;
 }
 
 .cv-logo-placeholder {

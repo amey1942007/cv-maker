@@ -84,6 +84,7 @@ export interface CVPage {
 export interface CVDocument {
   name: string
   photoBase64?: string
+  showIITLogo: boolean
   socials: SocialLink[]
   pages: CVPage[]
 }

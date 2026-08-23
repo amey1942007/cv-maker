@@ -138,13 +138,7 @@ Use the top bar:
 
 ### 7. IIT Delhi logo
 
-Replace the placeholder logo at:
-
-```
-public/iit-delhi-logo.svg
-```
-
-Use your official IIT Delhi logo (PNG or SVG). If the file fails to load, a placeholder is shown instead.
+Toggle **IIT Delhi Logo** in the Header panel to show or hide the official logo on page 1 (top-left). The logo is included in the app at `public/iit-delhi-logo.png`.
 
 ## GitHub Pages Deployment
 

@@ -13,6 +13,7 @@ function isHeaderFilled(cv: CVDocument): boolean {
 function headerSummary(cv: CVDocument): string {
   const parts: string[] = []
   if (cv.name.trim()) parts.push(cv.name)
+  if (cv.showIITLogo) parts.push('IIT Logo')
   if (cv.photoBase64) parts.push('Photo')
   const filledSocials = cv.socials.filter((s) => s.value.trim()).length
   if (filledSocials > 0) parts.push(`${filledSocials} link${filledSocials > 1 ? 's' : ''}`)
@@ -20,7 +21,8 @@ function headerSummary(cv: CVDocument): string {
 }
 
 export function HeaderFields() {
-  const { cv, setName, setPhoto, updateSocial, addSocial, removeSocial } = useCVStore()
+  const { cv, setName, setPhoto, setShowIITLogo, updateSocial, addSocial, removeSocial } =
+    useCVStore()
   const filled = isHeaderFilled(cv)
   const [collapsed, setCollapsed] = useState(filled)
   const prevFilled = useRef(filled)
@@ -77,6 +79,30 @@ export function HeaderFields() {
               className="w-full border border-gray-300 rounded px-3 py-2 text-sm uppercase"
               placeholder="YOUR FULL NAME"
             />
+          </div>
+
+          <div className="flex items-center justify-between gap-3 py-1">
+            <div>
+              <label className="block text-xs font-medium text-gray-600 mb-0.5">
+                IIT Delhi Logo
+              </label>
+              <p className="text-xs text-gray-500">Show official logo on page 1 (top-left)</p>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={cv.showIITLogo ?? true}
+              onClick={() => setShowIITLogo(!(cv.showIITLogo ?? true))}
+              className={`relative inline-flex h-6 w-11 shrink-0 rounded-full border-2 border-transparent transition-colors ${
+                cv.showIITLogo ?? true ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transition-transform ${
+                  cv.showIITLogo ?? true ? 'translate-x-5' : 'translate-x-0'
+                }`}
+              />
+            </button>
           </div>
 
           <div>

@@ -18,6 +18,7 @@ interface CVStore {
   selectedBlockId: string | null
   setName: (name: string) => void
   setPhoto: (photoBase64: string | undefined) => void
+  setShowIITLogo: (show: boolean) => void
   updateSocial: (id: string, value: string, label?: string) => void
   addSocial: (type: SocialType, label?: string) => void
   removeSocial: (id: string) => void
@@ -55,6 +56,9 @@ export const useCVStore = create<CVStore>()(
 
       setPhoto: (photoBase64) =>
         set((state) => ({ cv: { ...state.cv, photoBase64 } })),
+
+      setShowIITLogo: (show) =>
+        set((state) => ({ cv: { ...state.cv, showIITLogo: show } })),
 
       updateSocial: (id, value, label) =>
         set((state) => ({

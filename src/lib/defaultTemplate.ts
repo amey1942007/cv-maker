@@ -4,6 +4,7 @@ import { generateId } from '../types/cv'
 export function createDefaultCV(): CVDocument {
   return {
     name: 'YOUR FULL NAME',
+    showIITLogo: true,
     socials: [
       { id: generateId(), type: 'email', value: 'your.email@example.com' },
       { id: generateId(), type: 'linkedin', value: 'linkedin.com/in/yourprofile' },
