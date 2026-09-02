@@ -1,7 +1,7 @@
 import html2canvas from 'html2canvas'
 import cvPrintCss from '../../styles/cv-print.css?inline'
 
-export const EXPORT_SCALE = 3
+export const EXPORT_SCALE = 2
 
 const EXPORT_CSS = `
 ${cvPrintCss}
@@ -14,6 +14,9 @@ html, body {
 a {
   color: #000000;
   text-decoration: none;
+}
+* {
+  box-shadow: none !important;
 }
 `
 
@@ -54,20 +57,25 @@ export function getCvPages(container: HTMLElement): HTMLElement[] {
   return Array.from(container.querySelectorAll('.cv-page')) as HTMLElement[]
 }
 
+function scrollPageIntoView(page: HTMLElement, scrollParent?: HTMLElement | null) {
+  if (scrollParent) {
+    const pageTop = page.offsetTop - scrollParent.offsetTop
+    scrollParent.scrollTop = Math.max(0, pageTop - 4)
+    return
+  }
+  page.scrollIntoView({ block: 'start', behavior: 'instant' })
+}
+
 export async function captureCvPage(
   page: HTMLElement,
   scrollParent?: HTMLElement | null
 ): Promise<HTMLCanvasElement> {
-  if (scrollParent) {
-    const parentRect = scrollParent.getBoundingClientRect()
-    const pageRect = page.getBoundingClientRect()
-    scrollParent.scrollTop += pageRect.top - parentRect.top - 8
-  } else {
-    page.scrollIntoView({ block: 'start', behavior: 'instant' })
-  }
-
+  scrollPageIntoView(page, scrollParent)
   await waitForLayout()
-  await new Promise((resolve) => setTimeout(resolve, 150))
+  await new Promise((resolve) => setTimeout(resolve, 250))
+
+  const width = page.offsetWidth
+  const height = page.offsetHeight
 
   return html2canvas(page, {
     scale: EXPORT_SCALE,
@@ -75,6 +83,12 @@ export async function captureCvPage(
     allowTaint: true,
     logging: false,
     backgroundColor: '#ffffff',
+    width,
+    height,
+    scrollX: 0,
+    scrollY: 0,
+    windowWidth: width,
+    windowHeight: height,
     onclone: (clonedDoc) => {
       prepareCloneForExport(clonedDoc)
     },

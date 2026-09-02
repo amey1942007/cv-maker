@@ -10,30 +10,34 @@ export function IITCourseTable({ block }: IITCourseTableProps) {
   return (
     <div className="cv-block">
       <SectionHeaderBar title={block.title} />
-      <div className="cv-education cv-iit-course">
-        <div className="cv-education-header">
-          <span className="cv-iit-degree">Degree</span>
-          <span className="cv-iit-institute">Institute</span>
-          <span className="cv-iit-cgpa">CGPA</span>
-          <span className="cv-iit-rank">Dept. Rank</span>
-        </div>
-        {block.rows.map((row) => (
-          <div key={row.id} className="cv-education-row">
-            <span className="cv-iit-degree">
-              <FormattedText text={row.degree} />
-            </span>
-            <span className="cv-iit-institute">
-              <FormattedText text={row.institute} />
-            </span>
-            <span className="cv-iit-cgpa">
-              <FormattedText text={row.cgpa} />
-            </span>
-            <span className="cv-iit-rank">
-              <FormattedText text={row.deptRank} />
-            </span>
-          </div>
-        ))}
-      </div>
+      <table className="cv-table cv-iit-course-table">
+        <thead>
+          <tr>
+            <th className="cv-iit-degree">Degree</th>
+            <th className="cv-iit-institute">Institute</th>
+            <th className="cv-iit-cgpa">CGPA</th>
+            <th className="cv-iit-rank">Dept. Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          {block.rows.map((row) => (
+            <tr key={row.id}>
+              <td className="cv-iit-degree">
+                <FormattedText text={row.degree} />
+              </td>
+              <td className="cv-iit-institute">
+                <FormattedText text={row.institute} />
+              </td>
+              <td className="cv-iit-cgpa">
+                <FormattedText text={row.cgpa} />
+              </td>
+              <td className="cv-iit-rank">
+                <FormattedText text={row.deptRank} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

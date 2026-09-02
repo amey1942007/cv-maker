@@ -25,8 +25,6 @@ export const CVPreview = forwardRef<HTMLDivElement>(function CVPreview(_, ref) {
               showIITLogo={cv.showIITLogo ?? true}
               showHeader={pageIndex === 0}
             />
-            {pageIndex > 0 && <div className="cv-name">{cv.name}</div>}
-
             {page.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
