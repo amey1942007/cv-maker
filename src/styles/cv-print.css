@@ -162,9 +162,7 @@
   letter-spacing: inherit;
   word-spacing: inherit;
   vertical-align: baseline;
-  font-weight: inherit;
-  -webkit-text-stroke: 0.35px currentColor;
-  paint-order: stroke fill;
+  font-weight: 700;
 }
 
 .cv-formatted-text .cv-fmt-underline {
@@ -290,4 +288,32 @@
     overflow: hidden;
     height: 297mm;
   }
+}
+
+/* Off-screen clone used for PDF export — matches on-screen preview */
+.cv-pdf-export-root {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 210mm;
+  background: #fff;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cv-pdf-export-root .cv-page {
+  box-shadow: none;
+  margin: 0;
+  overflow: hidden;
+}
+
+.cv-pdf-export-page .cv-fmt-bold {
+  font-weight: 700 !important;
+  -webkit-text-stroke: 0 !important;
+  paint-order: normal !important;
+}
+
+.cv-pdf-export-page .cv-fmt-underline {
+  text-decoration: underline !important;
+  box-shadow: none !important;
 }
