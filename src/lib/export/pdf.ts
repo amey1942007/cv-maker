@@ -1,5 +1,20 @@
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import cvPrintCss from '../../styles/cv-print.css?inline'
+
+const PDF_EXPORT_CSS = `
+${cvPrintCss}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+`
 
 function prepareCloneForExport(root: HTMLElement) {
   root.classList.add('cv-pdf-export-page')
@@ -18,6 +33,23 @@ function prepareCloneForExport(root: HTMLElement) {
       img.crossOrigin = 'anonymous'
     }
   })
+}
+
+function sanitizeCloneDocument(clonedDoc: Document, clonedPage: HTMLElement) {
+  clonedDoc.querySelectorAll('link[rel="stylesheet"], style').forEach((node) => {
+    node.remove()
+  })
+
+  const style = clonedDoc.createElement('style')
+  style.textContent = PDF_EXPORT_CSS
+  clonedDoc.head.appendChild(style)
+
+  if (clonedDoc.body) {
+    clonedDoc.body.style.backgroundColor = '#ffffff'
+    clonedDoc.body.style.color = '#000000'
+  }
+
+  prepareCloneForExport(clonedPage)
 }
 
 function waitForLayout(): Promise<void> {
@@ -74,8 +106,8 @@ export async function exportToPDF(container: HTMLElement, filename: string): Pro
         backgroundColor: '#ffffff',
         width,
         height,
-        onclone: (_doc, clonedPage) => {
-          prepareCloneForExport(clonedPage)
+        onclone: (clonedDoc, clonedPage) => {
+          sanitizeCloneDocument(clonedDoc, clonedPage)
         },
       })
 
