@@ -20,18 +20,13 @@ export default function App() {
 
   const handleExportPDF = async () => {
     const container = previewRef.current?.querySelector('.cv-document') as HTMLElement | null
-    if (!container) {
-      alert('Preview not ready. Please wait a moment and try again.')
-      return
-    }
+    if (!container) return
     setExporting(true)
     try {
       await exportToPDF(container, filename)
     } catch (error) {
       console.error('PDF export failed:', error)
-      const message =
-        error instanceof Error ? error.message : 'PDF export failed. Please try again.'
-      alert(message)
+      alert('PDF export failed. Please try again.')
     } finally {
       setExporting(false)
     }

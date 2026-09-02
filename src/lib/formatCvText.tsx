@@ -10,23 +10,15 @@ export function formatCvText(text: string): ReactNode {
 
   return parts.map((part, i) => {
     if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
-      return (
-        <span key={i} className="cv-fmt-bold">
-          {formatCvText(part.slice(1, -1))}
-        </span>
-      )
+      return <strong key={i}>{formatCvText(part.slice(1, -1))}</strong>
     }
     if (part.startsWith('_') && part.endsWith('_') && part.length > 2) {
-      return (
-        <span key={i} className="cv-fmt-underline">
-          {formatCvText(part.slice(1, -1))}
-        </span>
-      )
+      return <u key={i}>{formatCvText(part.slice(1, -1))}</u>
     }
     return <Fragment key={i}>{part}</Fragment>
   })
 }
 
 export function FormattedText({ text }: { text: string }) {
-  return <span className="cv-formatted-text">{formatCvText(text)}</span>
+  return <>{formatCvText(text)}</>
 }
