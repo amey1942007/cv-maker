@@ -92,7 +92,7 @@ function ExportBar() {
         <div className="w-[420px] min-w-[360px] border-r border-gray-200 dark:border-gray-700 overflow-hidden shrink-0">
           <EditorPanel />
         </div>
-        <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-950" ref={previewRef}>
+        <div className="flex-1 min-h-0 overflow-y-auto bg-gray-100 dark:bg-gray-950" ref={previewRef}>
           <CVPreview />
         </div>
       </div>

@@ -17,7 +17,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .cv-page-content {
@@ -284,5 +284,7 @@
     box-shadow: none;
     margin: 0;
     page-break-after: always;
+    overflow: hidden;
+    height: 297mm;
   }
 }
