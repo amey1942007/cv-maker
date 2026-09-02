@@ -28,7 +28,8 @@ export function createDefaultTimeline(present = true): ProjectTimeline {
 function formatYear(year: string): string {
   const digits = year.replace(/\D/g, '')
   if (!digits) return ''
-  return digits.slice(-2).padStart(2, '0')
+  if (digits.length >= 4) return digits.slice(0, 4)
+  return `20${digits.slice(-2).padStart(2, '0')}`
 }
 
 export function formatProjectTimeline(timeline: ProjectTimeline): string | null {
@@ -36,14 +37,14 @@ export function formatProjectTimeline(timeline: ProjectTimeline): string | null 
   if (!timeline.startMonth || !startYear) return null
 
   const start = `${timeline.startMonth},${startYear}`
-  if (timeline.isPresent) return `${start}-Present`
+  if (timeline.isPresent) return `(${start} - PRESENT)`
 
   const endYear = formatYear(timeline.endYear)
   if (timeline.endMonth && endYear) {
-    return `${start}-${timeline.endMonth},${endYear}`
+    return `(${start} - ${timeline.endMonth},${endYear})`
   }
 
-  return start
+  return `(${start})`
 }
 
 export function getProjectDateDisplay(block: ProjectBlock): string | null {

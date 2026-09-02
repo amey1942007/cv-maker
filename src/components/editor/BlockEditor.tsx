@@ -249,7 +249,7 @@ export function BlockEditor({ pageId, block, index, total }: BlockEditorProps) {
               type="text"
               value={block.subtitle ?? ''}
               onChange={(e) => updateBlock(pageId, block.id, { subtitle: e.target.value })}
-              placeholder="(Professor / company name)"
+              placeholder="Optional subtitle (e.g. company). Put mentor name in bullet points."
               className="w-full border rounded px-2 py-1 text-xs"
             />
             <ProjectTimelineEditor

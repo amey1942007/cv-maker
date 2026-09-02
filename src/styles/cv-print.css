@@ -140,23 +140,29 @@
   text-indent: 0;
 }
 
+.cv-block {
+  width: 100%;
+}
+
 .cv-project-title-row {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   align-items: baseline;
-  gap: 12px;
+  gap: 24px;
   font-weight: bold;
   margin-top: 3px;
   margin-bottom: 1px;
 }
 
 .cv-project-title-text {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .cv-project-title-date {
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding-left: 16px;
   font-weight: bold;
   white-space: nowrap;
   text-align: right;

@@ -61,7 +61,7 @@ export function ProjectTimelineEditor({ timeline, onChange }: ProjectTimelineEdi
           Present
         </label>
       </div>
-      <p className="text-[11px] text-gray-500">Preview: May,26-June,27 or May,26-Present</p>
+      <p className="text-[11px] text-gray-500">Preview: (May,2026 - PRESENT) or (May,2026 - June,2027)</p>
     </div>
   )
 }
