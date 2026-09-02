@@ -32,6 +32,14 @@ function sanitizeCloneDocument(clonedDoc: Document) {
   }
 }
 
+function prepareCloneForExport(clonedDoc: Document) {
+  sanitizeCloneDocument(clonedDoc)
+
+  clonedDoc.querySelectorAll('.cv-divider').forEach((el) => {
+    el.textContent = ''
+  })
+}
+
 function waitForLayout(): Promise<void> {
   return new Promise((resolve) => {
     requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
@@ -68,7 +76,7 @@ export async function captureCvPage(
     logging: false,
     backgroundColor: '#ffffff',
     onclone: (clonedDoc) => {
-      sanitizeCloneDocument(clonedDoc)
+      prepareCloneForExport(clonedDoc)
     },
   })
 }
