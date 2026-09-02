@@ -19,11 +19,19 @@ export default function App() {
   const filename = cv.name.replace(/\s+/g, '_').toLowerCase() || 'cv'
 
   const handleExportPDF = async () => {
-    const container = previewRef.current?.querySelector('.cv-document') as HTMLElement
-    if (!container) return
+    const container = previewRef.current?.querySelector('.cv-document') as HTMLElement | null
+    if (!container) {
+      alert('Preview not ready. Please wait a moment and try again.')
+      return
+    }
     setExporting(true)
     try {
       await exportToPDF(container, filename)
+    } catch (error) {
+      console.error('PDF export failed:', error)
+      const message =
+        error instanceof Error ? error.message : 'PDF export failed. Please try again.'
+      alert(message)
     } finally {
       setExporting(false)
     }

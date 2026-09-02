@@ -290,15 +290,16 @@
   }
 }
 
-/* Off-screen clone used for PDF export — matches on-screen preview */
+/* Off-screen clone used for PDF export — hidden but laid out at full A4 width */
 .cv-pdf-export-root {
   position: fixed;
-  left: -10000px;
+  left: 0;
   top: 0;
   width: 210mm;
-  background: #fff;
+  visibility: hidden;
   pointer-events: none;
   z-index: -1;
+  overflow: hidden;
 }
 
 .cv-pdf-export-root .cv-page {
