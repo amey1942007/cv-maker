@@ -7,6 +7,8 @@ import {
 } from 'lucide-react'
 import { useCVStore } from '../../store/cvStore'
 import type { Block } from '../../types/cv'
+import { createDefaultTimeline } from '../../lib/projectTimeline'
+import { ProjectTimelineEditor } from './ProjectTimelineEditor'
 
 interface BlockEditorProps {
   pageId: string
@@ -240,25 +242,20 @@ export function BlockEditor({ pageId, block, index, total }: BlockEditorProps) {
               type="text"
               value={block.title}
               onChange={(e) => updateBlock(pageId, block.id, { title: e.target.value })}
-              placeholder="Project title"
+              placeholder="Project / internship title"
               className="w-full border border-gray-300 rounded px-2 py-1 text-sm font-semibold"
             />
-            <div className="grid grid-cols-2 gap-2">
-              <input
-                type="text"
-                value={block.subtitle ?? ''}
-                onChange={(e) => updateBlock(pageId, block.id, { subtitle: e.target.value })}
-                placeholder="(Professor Name)"
-                className="border rounded px-2 py-1 text-xs"
-              />
-              <input
-                type="text"
-                value={block.dateRange ?? ''}
-                onChange={(e) => updateBlock(pageId, block.id, { dateRange: e.target.value })}
-                placeholder="(Jan, 2026 - Present)"
-                className="border rounded px-2 py-1 text-xs"
-              />
-            </div>
+            <input
+              type="text"
+              value={block.subtitle ?? ''}
+              onChange={(e) => updateBlock(pageId, block.id, { subtitle: e.target.value })}
+              placeholder="(Professor / company name)"
+              className="w-full border rounded px-2 py-1 text-xs"
+            />
+            <ProjectTimelineEditor
+              timeline={block.timeline ?? createDefaultTimeline(true)}
+              onChange={(timeline) => updateBlock(pageId, block.id, { timeline })}
+            />
             {block.points.map((point, i) => (
               <div key={i} className="flex gap-1">
                 <textarea

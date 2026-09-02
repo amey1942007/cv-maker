@@ -47,12 +47,22 @@ export interface SectionBlock {
   points: string[]
 }
 
+export interface ProjectTimeline {
+  startMonth: string
+  startYear: string
+  endMonth: string
+  endYear: string
+  isPresent: boolean
+}
+
 export interface ProjectBlock {
   id: string
   type: 'project'
   title: string
   subtitle?: string
+  /** @deprecated Use timeline instead */
   dateRange?: string
+  timeline?: ProjectTimeline
   points: string[]
   dividerAfter?: boolean
 }

@@ -140,10 +140,26 @@
   text-indent: 0;
 }
 
-.cv-project-title {
+.cv-project-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
   font-weight: bold;
   margin-top: 3px;
   margin-bottom: 1px;
+}
+
+.cv-project-title-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cv-project-title-date {
+  flex-shrink: 0;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: right;
 }
 
 /* Project separator — em-dash line between projects, full page width */

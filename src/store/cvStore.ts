@@ -12,6 +12,7 @@ import type {
 } from '../types/cv'
 import { generateId } from '../types/cv'
 import { createDefaultCV } from '../lib/defaultTemplate'
+import { createDefaultTimeline } from '../lib/projectTimeline'
 
 interface CVStore {
   cv: CVDocument
@@ -197,7 +198,7 @@ export const useCVStore = create<CVStore>()(
           type: 'project',
           title: 'Project Title',
           subtitle: '',
-          dateRange: '',
+          timeline: createDefaultTimeline(true),
           points: [''],
           dividerAfter: true,
         })

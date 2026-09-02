@@ -53,7 +53,7 @@ export function Toolbar({
         <GraduationCap size={14} /> Add IIT Course
       </button>
       <button type="button" onClick={onAddProject} className={btnClass}>
-        <FolderPlus size={14} /> Add Project
+        <FolderPlus size={14} /> Add Project/Internship
       </button>
       <button type="button" onClick={onAddPoint} className={btnClass}>
         <ListPlus size={14} /> Add Point

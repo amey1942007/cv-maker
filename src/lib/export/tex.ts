@@ -1,4 +1,5 @@
 import type { CVDocument, Block } from '../../types/cv'
+import { getProjectDateDisplay } from '../projectTimeline'
 
 function escapeLatex(text: string): string {
   return text
@@ -58,14 +59,17 @@ ${points}
     case 'project': {
       const titleParts = [block.title]
       if (block.subtitle) titleParts.push(` ${block.subtitle}`)
-      if (block.dateRange) titleParts.push(` ${block.dateRange}`)
+      const dateDisplay = getProjectDateDisplay(block)
+      const titleLine = dateDisplay
+        ? `\\textbf{${escapeLatex(titleParts.join(''))}} \\hfill ${escapeLatex(dateDisplay)}`
+        : `\\textbf{${escapeLatex(titleParts.join(''))}}`
       const points = block.points
         .filter((p) => p.trim())
         .map((p) => escapeLatex(p))
         .join('\n\n')
       const divider = block.dividerAfter ? '\n\\hdashrule{\\textwidth}{0.4pt}{2pt 2pt}\n' : ''
       return `
-\\textbf{${escapeLatex(titleParts.join(''))}}
+${titleLine}
 ${points}
 ${divider}
 `

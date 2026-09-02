@@ -9,8 +9,11 @@ import {
   WidthType,
   BorderStyle,
   AlignmentType,
+  TabStopType,
+  TabStopPosition,
 } from 'docx'
 import type { CVDocument, Block } from '../../types/cv'
+import { getProjectDateDisplay } from '../projectTimeline'
 
 function sectionTitle(text: string): Paragraph {
   return new Paragraph({
@@ -134,18 +137,33 @@ function renderBlock(block: Block): (Paragraph | Table)[] {
     case 'project': {
       const titleParts = [block.title]
       if (block.subtitle) titleParts.push(` ${block.subtitle}`)
-      if (block.dateRange) titleParts.push(` ${block.dateRange}`)
+      const dateDisplay = getProjectDateDisplay(block)
+      const titleChildren = [
+        new TextRun({
+          text: titleParts.join(''),
+          bold: true,
+          font: 'Times New Roman',
+          size: 21,
+        }),
+      ]
+      if (dateDisplay) {
+        titleChildren.push(
+          new TextRun({ text: '\t', font: 'Times New Roman', size: 21 }),
+          new TextRun({
+            text: dateDisplay,
+            bold: true,
+            font: 'Times New Roman',
+            size: 21,
+          })
+        )
+      }
       const items: (Paragraph | Table)[] = [
         new Paragraph({
           spacing: { before: 120, after: 60 },
-          children: [
-            new TextRun({
-              text: titleParts.join(''),
-              bold: true,
-              font: 'Times New Roman',
-              size: 21,
-            }),
-          ],
+          tabStops: dateDisplay
+            ? [{ type: TabStopType.RIGHT, position: TabStopPosition.MAX }]
+            : undefined,
+          children: titleChildren,
         }),
         ...block.points
           .filter((p) => p.trim())
