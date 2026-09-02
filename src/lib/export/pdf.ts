@@ -1,38 +1,12 @@
-import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
-import cvPrintCss from '../../styles/cv-print.css?inline'
+import { captureCvPage, getCvPages, sanitizeFilename } from './capture'
 
-const PDF_EXPORT_CSS = `
-${cvPrintCss}
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  color: #000000;
-}
-a {
-  color: #000000;
-  text-decoration: none;
-}
-`
-
-function sanitizeCloneDocument(clonedDoc: Document) {
-  clonedDoc.querySelectorAll('link[rel="stylesheet"], style').forEach((node) => {
-    node.remove()
-  })
-
-  const style = clonedDoc.createElement('style')
-  style.textContent = PDF_EXPORT_CSS
-  clonedDoc.head.appendChild(style)
-
-  if (clonedDoc.body) {
-    clonedDoc.body.style.backgroundColor = '#ffffff'
-    clonedDoc.body.style.color = '#000000'
-  }
-}
-
-export async function exportToPDF(container: HTMLElement, filename: string): Promise<void> {
-  const pages = container.querySelectorAll('.cv-page')
+export async function exportToPDF(
+  container: HTMLElement,
+  filename: string,
+  scrollParent?: HTMLElement | null
+): Promise<void> {
+  const pages = getCvPages(container)
   if (pages.length === 0) return
 
   const pdf = new jsPDF({
@@ -41,26 +15,26 @@ export async function exportToPDF(container: HTMLElement, filename: string): Pro
     format: 'a4',
   })
 
-  for (let i = 0; i < pages.length; i++) {
-    const page = pages[i] as HTMLElement
-    const canvas = await html2canvas(page, {
-      scale: 2,
-      useCORS: true,
-      logging: false,
-      backgroundColor: '#ffffff',
-      onclone: (clonedDoc) => {
-        sanitizeCloneDocument(clonedDoc)
-      },
-    })
+  const a4Width = pdf.internal.pageSize.getWidth()
+  const a4Height = pdf.internal.pageSize.getHeight()
+  const safeName = sanitizeFilename(filename)
 
+  for (let i = 0; i < pages.length; i++) {
+    const canvas = await captureCvPage(pages[i], scrollParent)
     const imgData = canvas.toDataURL('image/png')
-    const pdfWidth = pdf.internal.pageSize.getWidth()
-    const pdfHeight = pdf.internal.pageSize.getHeight()
+
+    let imgWidth = a4Width
+    let imgHeight = (canvas.height * imgWidth) / canvas.width
+    if (imgHeight > a4Height) {
+      imgHeight = a4Height
+      imgWidth = (canvas.width * imgHeight) / canvas.height
+    }
+
+    const x = (a4Width - imgWidth) / 2
 
     if (i > 0) pdf.addPage()
-    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
+    pdf.addImage(imgData, 'PNG', x, 0, imgWidth, imgHeight)
   }
 
-  const safeName = filename.replace(/[^\w.-]+/g, '_') || 'cv'
   pdf.save(`${safeName}.pdf`)
 }

@@ -6,6 +6,7 @@ import { AppDisclaimer } from './components/AppDisclaimer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { useCVStore } from './store/cvStore'
 import { exportToPDF } from './lib/export/pdf'
+import { exportToPNG } from './lib/export/png'
 import { exportToDOCX } from './lib/export/docx'
 import { exportToTeX, exportToJSON, importFromJSON } from './lib/export/tex'
 
@@ -23,10 +24,25 @@ export default function App() {
     if (!container) return
     setExporting(true)
     try {
-      await exportToPDF(container, filename)
+      await exportToPDF(container, filename, previewRef.current)
     } catch (error) {
       console.error('PDF export failed:', error)
       alert('PDF export failed. Please try again.')
+    } finally {
+      setExporting(false)
+    }
+  }
+
+  const handleExportPNG = async () => {
+    const container = previewRef.current?.querySelector('.cv-document') as HTMLElement | null
+    if (!container) return
+    setExporting(true)
+    try {
+      const count = await exportToPNG(container, filename, previewRef.current)
+      alert(`Downloaded ${count} high-quality PNG image${count === 1 ? '' : 's'}.`)
+    } catch (error) {
+      console.error('PNG export failed:', error)
+      alert('PNG export failed. Please try again.')
     } finally {
       setExporting(false)
     }
@@ -60,9 +76,17 @@ export default function App() {
         <div className="flex items-center gap-2 flex-wrap justify-end">
           <button
             type="button"
-            onClick={handleExportPDF}
+            onClick={handleExportPNG}
             disabled={exporting}
             className={`${btnClass} bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900`}
+          >
+            <Download size={14} /> Export PNG
+          </button>
+          <button
+            type="button"
+            onClick={handleExportPDF}
+            disabled={exporting}
+            className={btnClass}
           >
             <Download size={14} /> Export PDF
           </button>
