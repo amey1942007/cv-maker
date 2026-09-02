@@ -48,7 +48,7 @@
 
 /* Section header: black line + gray bar + black line */
 .cv-section-header {
-  margin: 4px 0 1px;
+  margin: 10px 0 1px;
   width: 100%;
 }
 
@@ -64,16 +64,19 @@
 }
 
 .cv-section-header-bar {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  min-height: 18px;
   background: #d9d9d9;
   text-align: center;
-  padding: 2px 6px;
+  padding: 3px 6px;
   font-size: 10pt;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.2px;
-  line-height: 1.2;
+  line-height: 1;
   box-sizing: border-box;
 }
 
@@ -83,7 +86,7 @@
 }
 
 .cv-block + .cv-block .cv-section-header {
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 /* Education / IIT course tables */
@@ -194,7 +197,7 @@
   height: 0;
   border: none;
   border-bottom: 1.2px solid #000;
-  margin: 4px 0 3px;
+  margin: 10px 0 3px;
   padding: 0;
   width: 100%;
   font-size: 0;
