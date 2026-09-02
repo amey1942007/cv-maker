@@ -17,6 +17,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .cv-page-content {
@@ -45,12 +46,13 @@
   margin: 0 6px;
 }
 
-/* Section header: black line + gray bar + black line */
+/* Section header: black line + gray bar + black line — full page width */
 .cv-section-header {
   border-top: 1.5px solid #000;
   border-bottom: 1.5px solid #000;
-  margin: 5px 0 1px;
+  margin: 5px -12mm 1px;
   line-height: 1;
+  box-sizing: border-box;
 }
 
 .cv-section-header-bar {
@@ -144,18 +146,19 @@
   margin-bottom: 1px;
 }
 
-/* Project separator — em-dash line between projects */
+/* Project separator — em-dash line between projects, full page width */
 .cv-divider {
   border: none;
-  margin: 3px 0;
+  margin: 3px -12mm;
   padding: 0;
-  width: 100%;
+  width: calc(100% + 24mm);
   overflow: hidden;
   white-space: nowrap;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10pt;
   line-height: 1;
   color: #000;
+  box-sizing: border-box;
 }
 
 .cv-footer {
